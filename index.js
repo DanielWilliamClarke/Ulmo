@@ -7,6 +7,8 @@ app.use(morgan("combined"));
 
 const userProductRouter = require("./routes/user_products_routes.js");
 app.use(userProductRouter);
+const salaryRouter = require("./routes/salary_routes.js");
+app.use(salaryRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello world");
