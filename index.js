@@ -5,10 +5,9 @@ const app = express();
 
 app.use(morgan("combined"));
 
-
 app.get("/users/:id/products", (req, res) => {
 
-
+    
   
 
 });
