@@ -5,12 +5,9 @@ const app = express();
 
 app.use(morgan("combined"));
 
-app.get("/users/:id/products", (req, res) => {
+const userProductRouter = require("./routes/user_products_routes.js");
 
-  res.send(`Hello world ${req.params.id}`);
-  
-
-});
+app.use(userProductRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello world");
