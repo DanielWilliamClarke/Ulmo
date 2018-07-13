@@ -7,7 +7,7 @@ app.use(morgan("combined"));
 
 app.get("/users/:id/products", (req, res) => {
 
-    
+  res.send(`Hello world ${req.params.id}`);
   
 
 });

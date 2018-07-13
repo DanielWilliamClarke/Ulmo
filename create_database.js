@@ -29,6 +29,13 @@ function GenerateUsers(total) {
   });
 }
 
+function GenerateSalaries(total, maxPayments) {
+  con.query("INSERT INTO salary (userId, amount) VALUES ?", [GenerateSalaryData(total, maxPayments)], function (err, result) {
+    if (err) throw err;
+    console.log("Salaries created");
+  });
+}
+
 function GenerateProducts(total) {
   con.query("INSERT INTO product (productId, productName, productPrice) VALUES ?", [GenerateProductData(total)], function (err, result) {
     if (err) throw err;
@@ -36,23 +43,17 @@ function GenerateProducts(total) {
   });
 }
 
-function GenerateSalaries(total) {
-  con.query("INSERT INTO salary (userId, amount) VALUES ?", [GenerateSalaryData(total)], function (err, result) {
-    if (err) throw err;
-    console.log("Salaries created");
-  });
-}
-
-
 function GenerateTransactions(totalUsers, maxTransactionsPerUser, totalProducts) {
-  con.query("INSERT INTO transaction (transactionId, userId, productId) VALUES ?", [GenerateTransactionData(totalUsers, maxTransactionsPerUser, totalProducts)], function (err, result) {
+  con.query("INSERT INTO transaction (transactionId, userId, productId) VALUES ?", 
+  [GenerateTransactionData(totalUsers, maxTransactionsPerUser, totalProducts)], function (err, result) {
     if (err) throw err;
     console.log("Transaction created");
   });
 }
 
 function GenerateDiscounts(totalUsersDiscounted, totalUsers, totalProducts) {
-  con.query("INSERT INTO discount (userId, productId, percentage) VALUES ?", [GenerateDiscountData(totalUsersDiscounted, totalUsers, totalProducts)], function (err, result) {
+  con.query("INSERT INTO discount (userId, productId, percentage) VALUES ?",
+   [GenerateDiscountData(totalUsersDiscounted, totalUsers, totalProducts)], function (err, result) {
     if (err) throw err;
     console.log("Discounts created");
   });
@@ -70,11 +71,11 @@ con.connect(function (err) {
   CreateTable("db/tables/user.sql");
   GenerateUsers(totalUsers);
 
-  CreateTable("db/tables/salary.sql");
-  GenerateSalaries(totalUsers);
-
   CreateTable("db/tables/product.sql");
   GenerateProducts(totalProducts);
+
+  CreateTable("db/tables/salary.sql");
+  GenerateSalaries(totalUsers, maximumTransactionsPerUser);
 
   CreateTable("db/tables/transaction.sql");
   GenerateTransactions(totalUsers, maximumTransactionsPerUser, totalProducts);
