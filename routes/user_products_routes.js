@@ -10,7 +10,7 @@ router.get("/users/:id/products", (req, res) => {
   userFactory.GetProductsByUser(req.params.id, data => res.json(data));
 });
 
-router.get("/users/:id/totalSpent", (req, res) => {
+router.get("/users/:id/balancePaid", (req, res) => {
   const userFactory = new UserFactory(connectionPool);
   userFactory.GetUserTotalSpend(req.params.id, data => res.json(data));
 });

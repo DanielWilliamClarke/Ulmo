@@ -9,6 +9,8 @@ const userProductRouter = require("./routes/user_products_routes.js");
 app.use(userProductRouter);
 const salaryRouter = require("./routes/salary_routes.js");
 app.use(salaryRouter);
+const transactionRouter = require("./routes/transaction_routes.js");
+app.use(transactionRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello world");
