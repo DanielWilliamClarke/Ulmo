@@ -16,43 +16,43 @@ function CreateTable(sqlFile) {
   });
 }
 
-function GenerateUsers (total) {
+function GenerateUsers(total) {
 
   usersArray = [];
-  for(let index = 1; index <= total; index++) {
+  for (let index = 1; index <= total; index++) {
     usersArray.push([
       index,
       "Quit Genius User" + index,
       `user${index}@quitgenius.com`
     ]);
   }
-  
+
   con.query("INSERT INTO user (userId, userName, userEmail) VALUES ?", [usersArray], function (err, result) {
     if (err) throw err;
     console.log("Users created");
   });
 }
 
-function GenerateProducts (total) {
+function GenerateProducts(total) {
 
   productsArray = [];
-  for(let index = 1; index <= total; index++) {
+  for (let index = 1; index <= total; index++) {
     productsArray.push([
       index,
       "Quit Genius Product" + index,
       index * 10
     ]);
   }
-  
+
   con.query("INSERT INTO product (productId, productName, productPrice) VALUES ?", [productsArray], function (err, result) {
     if (err) throw err;
     console.log("Products created");
   });
 }
 
-function GenerateSalaries (total) {
+function GenerateSalaries(total) {
   salaryArray = [];
-  for(let index = 1; index <= total; index++) {
+  for (let index = 1; index <= total; index++) {
     salaryArray.push([
       index,
       index * 10
@@ -64,24 +64,54 @@ function GenerateSalaries (total) {
   });
 }
 
-con.connect(function (err) {
+function GetRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max)) + 1;
+}
+
+function GenerateTransactions(totalUsers, maxTransactionsPerUser, totalProducts) {
+  let transactions = [];
+  let transactionId = 1;
+  for (let index = 1; index <= totalUsers; index++) {
+    let userTransactions = [];
+    for (let jndex = 1; jndex <= GetRandomInt(maxTransactionsPerUser); jndex++) {
+      userTransactions.push([
+        ++transactionId,
+        index,
+        GetRandomInt(totalProducts),
+      ]);
+    }
+    transactions.push(userTransactions);
+  }
+
+  var flatTransactions = transactions.reduce(function (array, userTransactions) {
+    return array.concat(userTransactions);
+  }, []);
+
+  con.query("INSERT INTO transaction (transactionId, userId, productId) VALUES ?", [flatTransactions], function (err, result) {
+    if (err) throw err;
+    console.log("Transaction created");
+  });
+}
+
+con.connect(function 
+  (err) {
   if (err) throw err;
   console.log("Connected!");
-  CreateTable("tables/user.sql");
-  CreateTable("tables/product.sql");
-  CreateTable("tables/transaction.sql");
-  CreateTable("tables/salary.sql");
-  CreateTable("tables/discount.sql");
 
-  /* CREATE USERS */
+  CreateTable("tables/user.sql");
   GenerateUsers(100);
-  GenerateProducts(100);
+
+  CreateTable("tables/salary.sql");
   GenerateSalaries(100);
 
+  CreateTable("tables/product.sql");
+  GenerateProducts(20);
 
+  CreateTable("tables/transaction.sql");
+  GenerateTransactions(100, 5, 20);
 
+  CreateTable("tables/discount.sql");
 
 
 
 });
-
