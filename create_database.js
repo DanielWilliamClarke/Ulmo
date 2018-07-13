@@ -93,25 +93,44 @@ function GenerateTransactions(totalUsers, maxTransactionsPerUser, totalProducts)
   });
 }
 
+function GenerateDiscounts(totalUsersDiscounted, totalUsers, totalProducts) {
+  let discountArray = [];
+  for (let index = 1; index <= totalUsersDiscounted; index++) {
+    discountArray.push([
+      GetRandomInt(totalUsers),
+      GetRandomInt(totalProducts),
+      GetRandomInt(totalUsersDiscounted) / totalUsersDiscounted * 100
+    ]);
+  }
+
+  con.query("INSERT INTO discount (userId, productId, percentage) VALUES ?", [discountArray], function (err, result) {
+    if (err) throw err;
+    console.log("Discounts created");
+  });
+}
+
 con.connect(function 
   (err) {
   if (err) throw err;
   console.log("Connected!");
 
+  const totalUsers = 100;
+  const totalProducts = 20;
+  const maximumTransactionsPerUser = 5;
+  const totalDiscountedUser = 40;
+
   CreateTable("tables/user.sql");
-  GenerateUsers(100);
+  GenerateUsers(totalUsers);
 
   CreateTable("tables/salary.sql");
-  GenerateSalaries(100);
+  GenerateSalaries(totalUsers);
 
   CreateTable("tables/product.sql");
-  GenerateProducts(20);
+  GenerateProducts(totalProducts);
 
   CreateTable("tables/transaction.sql");
-  GenerateTransactions(100, 5, 20);
+  GenerateTransactions(totalUsers, maximumTransactionsPerUser, totalProducts);
 
   CreateTable("tables/discount.sql");
-
-
-
+  GenerateDiscounts(totalDiscountedUser, totalUsers, totalProducts);
 });
