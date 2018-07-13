@@ -12,10 +12,6 @@ app.use(salaryRouter);
 const transactionRouter = require("./routes/transaction_routes.js");
 app.use(transactionRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
-
 const port = 3000;
 app.listen(port, () => {
   console.log(`API Server up at localhost:${port}`);
