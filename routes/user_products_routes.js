@@ -15,4 +15,9 @@ router.get("/users/:id/balancePaid", (req, res) => {
   userFactory.GetUserTotalSpend(req.params.id, data => res.json(data));
 });
 
+router.get("/users/balanceOver/:amount", (req, res) => {
+  const userFactory = new UserFactory(connectionPool);
+  userFactory.GetUserWhoseBalanceIsGreaterThan(req.params.amount, data => res.json(data));
+});
+
 module.exports = router;
