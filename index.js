@@ -5,6 +5,14 @@ const app = express();
 
 app.use(morgan("combined"));
 
+
+app.get("/users/:id/products", (req, res) => {
+
+
+  
+
+});
+
 app.get("/", (req, res) => {
   res.send("Hello world");
 });
