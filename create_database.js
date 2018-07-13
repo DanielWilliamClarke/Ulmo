@@ -46,11 +46,23 @@ function GenerateProducts (total) {
   
   con.query("INSERT INTO product (productId, productName, productPrice) VALUES ?", [productsArray], function (err, result) {
     if (err) throw err;
-    console.log("Users created");
+    console.log("Products created");
   });
 }
 
-
+function GenerateSalaries (total) {
+  salaryArray = [];
+  for(let index = 1; index <= total; index++) {
+    salaryArray.push([
+      index,
+      index * 10
+    ]);
+  }
+  con.query("INSERT INTO salary (userId, amount) VALUES ?", [salaryArray], function (err, result) {
+    if (err) throw err;
+    console.log("Salaries created");
+  });
+}
 
 con.connect(function (err) {
   if (err) throw err;
@@ -61,10 +73,13 @@ con.connect(function (err) {
   CreateTable("tables/salary.sql");
   CreateTable("tables/discount.sql");
 
-
   /* CREATE USERS */
-  //GenerateUsers(100);
+  GenerateUsers(100);
   GenerateProducts(100);
+  GenerateSalaries(100);
+
+
+
 
 
 

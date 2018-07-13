@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS transaction (
 	transactionId VARCHAR(45) NOT NULL,
 	userId VARCHAR(45) NOT NULL,
 	productId VARCHAR(45) NOT NULL,
-	timestamp DATETIME NOT NULL,
+	timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (transactionId),
 	INDEX FK_userId (userId),
 	INDEX FK_productId (productId),
