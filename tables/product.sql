@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS product (
+	productId VARCHAR(45) NOT NULL,
+	productName VARCHAR(45) NOT NULL,
+	productPrice DOUBLE UNSIGNED NOT NULL,
+	PRIMARY KEY (productId)
+) ENGINE=InnoDB;
