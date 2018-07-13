@@ -1,5 +1,25 @@
 # Quit Genius Technical Test
 
+# To deploy the project locally
+1. Install docker for windows / linux (if necessary)
+2. Run docker-compose up
+3. Run npm install
+4. Run node (nodemon) db/create_database.js
+5. Run node (nodemon) index.js
+
+---
+# Routes
+
+**Once running you can then browse to localhost:3000{route} to use the api**  
+Below are the routes implemented in this project:
+
+- /users/:id/products -> Fetch products bought by a given user (:id)
+- /users/:id/balancePaid -> Fetch total amount spent by a user (:id)
+- /users/balanceOver/:amount -> Fetch all users whose net balance is over a given amount (:amount)
+- /users/:id/salary -> Fetch the salary records for a given user (:id) 
+- /users/:id/balanceGained -> Fetch summed salary records for a given user (:id)
+- /users/:id/netBalance -> Fetch the net balance of a given user (:id)
+
 ## Summary
 
 Create a system for retrieving users and displaying information about:

@@ -12,7 +12,7 @@ router.get("/users/:id/salary", (req, res) => {
   userFactory.GetSalaryPaymentsByUser(req.params.id, data => res.json(data));
 });
 
-router.get("/users/:id/balanceSpent", (req, res) => {
+router.get("/users/:id/balanceGained", (req, res) => {
   const userFactory = new UserFactory(connectionPool);
   userFactory.GetUserTotalSalaried(req.params.id, data => res.json(data));
 });
