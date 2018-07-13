@@ -9,6 +9,7 @@ const GenerateDiscountData = require("./db/data/discount_data.js");
 
 var con = mysql.createConnection({
   host: "localhost",
+  port: 3307,
   user: "root",
   password: "root",
   database: "qg"

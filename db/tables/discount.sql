@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS discount (
 	userId VARCHAR(45) NOT NULL,
 	productId VARCHAR(45) NOT NULL,
 	percentage DOUBLE UNSIGNED NOT NULL,
-	PRIMARY KEY (userId, productId),
+	PRIMARY KEY (userId),
 	INDEX FK_discount_productId (productId),
 	CONSTRAINT FK_discount_productId FOREIGN KEY (productId) REFERENCES product (productId) ON UPDATE CASCADE ON DELETE CASCADE,
 	CONSTRAINT FK_discount_userId FOREIGN KEY (userId) REFERENCES user (userId) ON UPDATE CASCADE ON DELETE CASCADE
