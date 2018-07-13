@@ -6,7 +6,6 @@ const app = express();
 app.use(morgan("combined"));
 
 const userProductRouter = require("./routes/user_products_routes.js");
-
 app.use(userProductRouter);
 
 app.get("/", (req, res) => {
