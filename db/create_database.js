@@ -1,11 +1,11 @@
 const mysql = require("mysql");
 const fs = require("fs");
 
-const GenerateUserData = require("./db/data/user_data.js");
-const GenerateProductData = require("./db/data/product_data.js");
-const GenerateSalaryData = require("./db/data/salary_data.js");
-const GenerateTransactionData = require("./db/data/transaction_data.js");
-const GenerateDiscountData = require("./db/data/discount_data.js");
+const GenerateUserData = require("./data/user_data.js");
+const GenerateProductData = require("./data/product_data.js");
+const GenerateSalaryData = require("./data/salary_data.js");
+const GenerateTransactionData = require("./data/transaction_data.js");
+const GenerateDiscountData = require("./data/discount_data.js");
 
 var con = mysql.createConnection({
   host: "localhost",
