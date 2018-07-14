@@ -64,10 +64,10 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 
-  const totalUsers = 100;
-  const totalProducts = 20;
-  const maximumTransactionsPerUser = 5;
-  const totalDiscountedUser = 40;
+  const totalUsers = 1000;
+  const totalProducts = 200;
+  const maximumTransactionsPerUser = 50;
+  const totalDiscountedUser = 400;
 
   CreateTable("db/tables/user.sql");
   GenerateUsers(totalUsers);
