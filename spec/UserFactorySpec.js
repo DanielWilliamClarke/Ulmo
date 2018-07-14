@@ -47,5 +47,7 @@ describe("The UserFactory class", () => {
         percentage: jasmine.any(Number)
       }
     }));
+
+    expect(mockCurrencyFormatter.format.calls.count()).toEqual(1);
   })
 })
