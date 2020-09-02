@@ -1,4 +1,4 @@
-# Quit Genius Technical Test
+# Ulmo
 
 # To deploy the project locally
 1. Install docker for windows / linux (if necessary)
