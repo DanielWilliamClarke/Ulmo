@@ -12,7 +12,7 @@ var con = mysql.createConnection({
   port: 3307,
   user: "root",
   password: "root",
-  database: "qg"
+  database: "ulmodb"
 });
 
 function CreateTable(sqlFile) {
