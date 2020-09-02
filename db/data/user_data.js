@@ -5,7 +5,7 @@ module.exports = function (total) {
     usersArray.push([
       index,
       "Ulmo User" + index,
-      `user${index}@quitgenius.com`
+      `user${index}@ulmo.com`
     ]);
   }
   return usersArray;
