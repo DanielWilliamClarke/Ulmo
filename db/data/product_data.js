@@ -3,7 +3,7 @@
   for (let index = 1; index <= total; index++) {
     productsArray.push([
       index,
-      "Quit Genius Product" + index,
+      "Ulmo Product" + index,
       index * 10
     ]);
   }
