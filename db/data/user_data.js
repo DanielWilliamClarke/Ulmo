@@ -4,7 +4,7 @@ module.exports = function (total) {
   for (let index = 1; index <= total; index++) {
     usersArray.push([
       index,
-      "Quit Genius User" + index,
+      "Ulmo User" + index,
       `user${index}@quitgenius.com`
     ]);
   }
